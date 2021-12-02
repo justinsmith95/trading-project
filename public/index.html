@@ -39,5 +39,42 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBJw7UbqUjGLkzgWe9S2Mk6g_MUYBRzHUU",
+          authDomain: "trading-project-5b164.firebaseapp.com",
+          projectId: "trading-project-5b164",
+          storageBucket: "trading-project-5b164.appspot.com",
+          messagingSenderId: "713805892000",
+          appId: "1:713805892000:web:d535d63cca5ab8f8e03cc5",
+          measurementId: "G-5FEKT3E2B6"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+
+<script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
+ 
+
+<script
+  src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
+  crossorigin></script>
+
+<script
+  src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
+  crossorigin></script>
+
+<script>var Alert = ReactBootstrap.Alert;</script>
   </body>
 </html>
