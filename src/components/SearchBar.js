@@ -6,7 +6,9 @@ import {
     ListGroup
 } from "react-bootstrap";
 import axios from 'axios';
-import { getSearchData } from '../utilities/axiosHelper'
+import { getSearchData } from '../utilities/axiosHelper';
+import InputList from '../components/InputList';
+
 
 export default function SearchBar(props) {
 
@@ -25,7 +27,7 @@ export default function SearchBar(props) {
             fetchSearchData();
             
         }
-    ), [submit])
+    }, [submit]);
 
 
     return (
@@ -33,13 +35,7 @@ export default function SearchBar(props) {
             <Form id="symbol-search">
                 <Form.Label>Search</Form.Label>
                 <input type="text" placeholder="Search by a stock's symbol" onChange={e => setSearch(e.target.value)} />
-                <ListGroup>
-                    <ListGroup.Item>`${searchData.bestMatches[0].name}`,    `${searchData.bestMatches[0].symbol}`</ListGroup.Item>
-                    <ListGroup.Item>`${searchData.bestMatches[1].name}`,    `${searchData.bestMatches[1].symbol}`</ListGroup.Item>
-                    <ListGroup.Item>`${searchData.bestMatches[2].name}`,    `${searchData.bestMatches[2].symbol}`</ListGroup.Item>
-                    <ListGroup.Item>`${searchData.bestMatches[3].name}`,    `${searchData.bestMatches[3].symbol}`</ListGroup.Item>
-                    <ListGroup.Item>`${searchData.bestMatches[4].name}`,    `${searchData.bestMatches[4].symbol}`</ListGroup.Item>
-                </ListGroup>
+                {searchData.length > 0 && <InputList/>}
                 <Button onSubmit={setSubmit(true)} type="submit">Search</Button>
             </Form>
         </>
