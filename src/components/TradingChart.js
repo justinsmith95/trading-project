@@ -1,9 +1,10 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import Chart from 'react-apexcharts';
 import ReactApexChart from "react-apexcharts";
 import { formatData } from "../utilities/chartHelper"
 // import { stockData } from "../data/stockData"
 import { symbol } from "prop-types";
+import { getChartData } from "../utilities/axiosHelper"
 
 
 export default function TradingChart(props) {
@@ -18,14 +19,17 @@ export default function TradingChart(props) {
     
             console.log(result.data)
 
-            setAlphaData(formatData(result.data["Time Series (Daily)"]));
+            setAlphaData(result.data)
+            
+            let newData = formatData(alphaData["Time Series (Daily)"])
+            console.log(newData);
+
+            setSeries(newData.series);
         };
     
         fetchStockData();
     }, []);
 
-    let newData = formatData(alphaData["Time Series (Daily)"])
-    console.log(newData)
 
     const [options, setObject] = useState({
         chart: {
@@ -59,7 +63,7 @@ export default function TradingChart(props) {
             }
         }
     })
-    const [series, setSeries] = useState(newData.series)
+    const [series, setSeries] = useState([])
     //    var options = {
     //         chart: {
     //           type: 'candlestick',
