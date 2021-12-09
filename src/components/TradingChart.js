@@ -1,16 +1,19 @@
 import React, { Component, useState, useEffect } from "react";
 import Chart from 'react-apexcharts';
 import ReactApexChart from "react-apexcharts";
-import { formatData } from "../utilities/chartHelper"
+import { formatData } from "../utilities/chartHelper";
 // import { stockData } from "../data/stockData"
 import { symbol } from "prop-types";
-import { getChartData } from "../utilities/axiosHelper"
+import { getChartData } from "../utilities/axiosHelper";
+import SearchBar from "../components/SearchBar";
+import {reducer, initialState} from '../utilities/reducer'
+import {actionChange, actionSubmit, actionBroken} from '../utilities/actions'
 
 
 export default function TradingChart(props) {
 
 
-    const [symbol, setSymbol] = useState(['TSLA'])
+    // const [symbol, setSymbol] = useState('TSLA')
     const [alphaData, setAlphaData] = useState([])
 
     useEffect(() => {
@@ -83,6 +86,7 @@ export default function TradingChart(props) {
     //         }
     //       }
  
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
         <div className="mixed-chart" >

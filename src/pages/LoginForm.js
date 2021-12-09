@@ -57,7 +57,6 @@ export default function LogInForm(props) {
     return (
         <div>
 
-        <TradingChart/>
         <Form onSubmit={logInUser}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>

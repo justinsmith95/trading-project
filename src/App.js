@@ -101,19 +101,14 @@ function App(props) {
 
 
                     <Route path="LogInForm"
-                       element={<LoginForm
-                            setToken={setToken}
-                            token={token}
-                        />}/>
-                   
+                        element={<LoginForm setToken={setToken} token={token} />} />
 
-                    <Route path="TradeSim" element={
-                        <TradeSim setToken={setToken} token={token}
-                        />}/>
 
-                    <Route path="RegisterForm" element={<RegisterForm  setToken={setToken} />}/>
-                    <Route path="Dashboard" element={<Dashboard userName={userData.name} token={token}/>} />
-                    <Route path="landingpage" index element={<LandingPage  token={token}/>} />
+                    <Route path="TradeSim" element={<TradeSim setToken={setToken} token={token} />} />
+
+                    <Route path="RegisterForm" element={<RegisterForm setToken={setToken} />} />
+                    <Route path="Dashboard" element={<Dashboard userName={userData.name} token={token} />} />
+                    <Route path="landingpage" index element={<LandingPage token={token} />} />
                     <Route path="*" element={<LandingPage />} />
                 </Route>
             </Routes>

@@ -92,36 +92,5 @@ export const getSearchData = (search) => {
 //////////////////////////////////////////////////////////////////////////////
 
 
-const cache = setupCache({
-    maxAge: 60 * 60 * 1000,
-    store: localForage,
-    exclude: {
-        query: false
-    }
-});
 
-const axiosInstance = axios.create({
-    baseURL: 'https://www.alphavantage.co/query',
-    adapter: cache.adapter
-});
-
-export const getChartData = (symbol) => {
-    return axiosInstance.get('', {
-        params: {
-            function: 'TIME_SERIES_DAILY',
-            symbol,
-            apikey: "EADD7VFG8GG0ABQY"
-        }
-    })
-};
-
-export const getSearchData = (search) => {
-    return axiosInstance.get('', {
-        params: {
-            function: 'SYMBOL_SEARCH',
-            keywords: `${search}`,
-            apikey: "EADD7VFG8GG0ABQY"
-        }
-    })
-};
 // "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=SPX&outputsize=full&apikey=EADD7VFG8GG0ABQY"
