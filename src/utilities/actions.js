@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const actionChange = { type: 'change' };
-export const actionSubmit = { type: 'submit' };
+export const actionSymbolChange = { type: 'change' };
+export const actionSymbolSubmit = { type: 'submit' };
 export const actionBroken = { type: 'whatevs' };

@@ -3,7 +3,6 @@ import Chart from 'react-apexcharts';
 import ReactApexChart from "react-apexcharts";
 import { formatData } from "../utilities/chartHelper";
 // import { stockData } from "../data/stockData"
-import { symbol } from "prop-types";
 import { getChartData } from "../utilities/axiosHelper";
 import SearchBar from "../components/SearchBar";
 import {reducer, initialState} from '../utilities/reducer'
@@ -18,7 +17,7 @@ export default function TradingChart(props) {
 
     useEffect(() => {
         const fetchStockData = async () => {
-            const result = await getChartData(symbol);
+            const result = await getChartData(props.symbol);
     
             console.log(result.data)
 
@@ -54,7 +53,7 @@ export default function TradingChart(props) {
             }
                 },
         title: {
-            text: symbol,
+            text: props.symbol,
             align: 'left'
         },
         xaxis: {
@@ -86,7 +85,7 @@ export default function TradingChart(props) {
     //         }
     //       }
  
-    const [state, dispatch] = useReducer(reducer, initialState);
+    // const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
         <div className="mixed-chart" >

@@ -6,47 +6,70 @@ import {
     ListGroup
 } from "react-bootstrap";
 import axios from 'axios';
-import { getSearchData } from '../utilities/axiosHelper';
+import { getSearchData, getChartData } from '../utilities/axiosHelper';
 import InputList from '../components/InputList';
-import TradingChart from '../components/TradingChart';
-import { symbol, setSymbol } from "prop-types";
 import {reducer, initialState} from '../utilities/reducer'
 import {actionChange, actionSubmit, actionBroken} from '../utilities/actions'
 
 
-export default function SearchBar(props) {
+export default function SearchBar({setSymbol}) {
 
     const [search, setSearch] = useState('');
     const [submit, setSubmit] = useState(false);
-    const [searchData, setSearchData] = useState("");
+    const [searchData, setSearchData] = useState({});
 
 
 /////////// onSubmit run api call for stock data //////////////////////////////////
     useEffect(() => {
         const fetchSearchData = async () => {
-            const result = await getSearchData(search);
+            if (submit && search.length > 0) {
+                console.log('submitted')
+                const result = await getSearchData(search);
+    
+                console.log(result.data);
+    
+                setSearchData(result.data);
+    
+                setSymbol(result.data.bestMatches[0]['1. symbol']);
 
-            console.log(result.data);
+                setSubmit(false);
 
-            setSearchData(result.data);
-
-            setSymbol(result.data.bestMatch[0].symbol);
+            }
 
             
         }
         fetchSearchData();
+        // getChartData();
 
     }, [submit]);
 //////////////////////////////////////////////////////////////////////////////////
 
+const updateSearch = (sym) => {
+    console.log(sym)
+    setSearch(sym)
+}
+
+
 ///////// onChange of search bar input, run api call for search results of symbols /////////
     useEffect(() => {
+
         const fetchSearchData = async () => {
-            const result = await getSearchData(search);
+            console.log('searching')
+            if (search.length > 0) {
+                console.log('search')
+                console.log(search)
+                const result = await getSearchData(search);
 
-            console.log(result.data)
+                console.log(result)
+                console.log(search)
+    
+                console.log(result.data)
+    
+                setSearchData(result.data);
+                // dispatch(actionChange);
 
-            setSearchData(result.data);
+            }
+
 
             
         }
@@ -54,15 +77,15 @@ export default function SearchBar(props) {
     }, [search]);
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-const [state, dispatch] = useReducer(reducer, initialState);
+// const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
         <>
             <Form id="symbol-search">
                 <Form.Label>Search</Form.Label>
-                <input type="text" placeholder="Search by a stock's symbol" onChange={e => setSearch(e.target.value), dispatch(actionChange)} />
-                {searchData.length > 0 && <InputList/>}
-                <Button onSubmit={setSubmit(true)} type="submit">Search</Button>
+                <input type="text" placeholder="Example: TSLA" onChange={e => setSearch(e.target.value)} value={search} />
+                {Object.keys(searchData).length > 0 && search.length > 0 && <InputList updateSearch={updateSearch} searchData={searchData}/>}
+                <Button onClick={()=>  setSubmit(true)} >Search</Button>
             </Form>
         </>
 

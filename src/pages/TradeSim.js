@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState} from 'react'
 import TradingChart from '../components/TradingChart'
 import axiosHelper from '../utilities/axiosHelper'
 import SearchBar from '../components/SearchBar';
@@ -16,10 +16,12 @@ const actionChange = { type: 'change' };
 const actionSubmit = { type: 'submit' };
 const actionBroken = { type: 'whatevs' };
 
+const[symbol, setSymbol] = useState("")
+
 return(
     <>
-    <SearchBar/>
-    <TradingChart/>
+    <SearchBar setSymbol={setSymbol}/>
+    {symbol.length > 0 && <TradingChart symbol={symbol}/>}
     <p>
         Trade Tracker Dashboard here
     </p>
