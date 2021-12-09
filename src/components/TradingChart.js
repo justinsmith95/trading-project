@@ -2,11 +2,29 @@ import React, { Component, useState } from "react";
 import Chart from 'react-apexcharts';
 import ReactApexChart from "react-apexcharts";
 import { formatData } from "../utilities/chartHelper"
-import { stockData } from "../data/stockData"
+// import { stockData } from "../data/stockData"
+import { symbol } from "prop-types";
+
 
 export default function TradingChart(props) {
 
-    let newData = formatData(stockData["Time Series (Daily)"])
+
+    const [symbol, setSymbol] = useState(['TSLA'])
+    const [alphaData, setAlphaData] = useState([])
+
+    useEffect(() => {
+        const fetchStockData = async () => {
+            const result = await getChartData(symbol);
+    
+            console.log(result.data)
+
+            setAlphaData(formatData(result.data["Time Series (Daily)"]));
+        };
+    
+        fetchStockData();
+    }, []);
+
+    let newData = formatData(alphaData["Time Series (Daily)"])
     console.log(newData)
 
     const [options, setObject] = useState({
@@ -29,7 +47,7 @@ export default function TradingChart(props) {
             }
                 },
         title: {
-            text: 'CandleStick Chart',
+            text: symbol,
             align: 'left'
         },
         xaxis: {

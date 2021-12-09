@@ -5,7 +5,7 @@ import {
 } from "react-bootstrap";
 import axios from 'axios'
 import {useNavigate, Navigate} from 'react-router-dom'
-import {stockData} from "../data/stockData"
+// import {stockData} from "../data/stockData"
 import TradingChart from "../components/TradingChart"
 
 

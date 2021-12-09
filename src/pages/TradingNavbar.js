@@ -21,7 +21,7 @@ export default function FishHeader(props) {
                         <Nav.Link to="/home" as={NavLink} activeClassName="active">Home</Nav.Link>
                         {props.token.length > 0 ?
                         
-                                <Nav.Link to="/Shop" as={NavLink} activeClassName="active">Trade</Nav.Link>
+                                <Nav.Link to="/TradeSim" as={NavLink} activeClassName="active">Trade</Nav.Link>
                                
                              :
                             <>
