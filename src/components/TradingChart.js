@@ -21,7 +21,7 @@ export default function TradingChart(props) {
 
             setAlphaData(result.data)
             
-            let newData = formatData(alphaData["Time Series (Daily)"])
+            let newData = formatData(result.data["Time Series (Daily)"])
             console.log(newData);
 
             setSeries(newData.series);
