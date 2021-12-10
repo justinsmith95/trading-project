@@ -21,7 +21,7 @@ export default function LogInForm(props) {
   let emailAddress = "emailAddress"
   let password = "password"
 
-    const logInAPI_URL = "https://port-3000-aincbootcampapi-ianrios529550.codeanyapp.com/api/auth/login"
+    const logInAPI_URL = "https://Backend-Laravel-jtsmith956297578.codeanyapp.com/api/v1/login"
     const logInUser = (e) => {
         e.preventDefault();
         console.log("apicall")
@@ -32,7 +32,7 @@ export default function LogInForm(props) {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
         },
-            client_secret: "mYebcUwE5S4FNff4pjK39vx3FtxCmZXz2Hy7XJHZ",
+            client_secret: "fdAE6nVPygkKxWVrn92SdzekMYuzgzqa88eci6Lm",
             client_id: "94ba363d-e0ab-4649-86ce-4a4392cc00ad",
             grant_type: "password",
             password: data.password,
@@ -50,6 +50,7 @@ export default function LogInForm(props) {
             })
             .catch(function (error) {
                 console.log(error)
+
             })
         //console.log(response)
     }

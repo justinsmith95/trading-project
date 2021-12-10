@@ -44,7 +44,7 @@ function App(props) {
     // logout user API Call
     const logoutUser = () => {
         console.log(token)
-        axios.get("https://port-3000-aincbootcampapi-ianrios529550.codeanyapp.com/api/auth/logout", {
+        axios.get("https://Backend-Laravel-jtsmith956297578.codeanyapp.com/api/v1/logout", {
             headers: {
                 'Authorization': 'Bearer ' + token
             }
@@ -59,6 +59,8 @@ function App(props) {
             })
             .catch(function (error) {
                 console.log(error)
+                window.localStorage.removeItem("userToken")
+                navigate("/landingpage")
             })
         console.log(token)
 

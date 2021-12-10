@@ -107,7 +107,7 @@ export default function RegisterForm(props) {
         data.confirmPassword
         ])
 
-    const registerAPI_URL = "https://port-3000-aincbootcampapi-ianrios529550.codeanyapp.com/api/auth/register";
+    const registerAPI_URL = "https://Backend-Laravel-jtsmith956297578.codeanyapp.com/api/v1/register";
 
     const postNewUser = () => {
         axios.post(registerAPI_URL, {

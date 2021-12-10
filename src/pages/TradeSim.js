@@ -12,9 +12,7 @@ export default function TradeSim() {
 
 const [state, dispatch] = useReducer(reducer, initialState);
 
-const actionChange = { type: 'change' };
-const actionSubmit = { type: 'submit' };
-const actionBroken = { type: 'whatevs' };
+
 
 const[symbol, setSymbol] = useState("")
 
