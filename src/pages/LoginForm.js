@@ -21,7 +21,7 @@ export default function LogInForm(props) {
   let emailAddress = "emailAddress"
   let password = "password"
 
-    const logInAPI_URL = "https://Backend-Laravel-jtsmith956297578.codeanyapp.com/api/v1/login"
+    const logInAPI_URL = "https://Backend-Laravel-jtsmith956297578.codeanyapp.com/oauth/token"
     const logInUser = (e) => {
         e.preventDefault();
         console.log("apicall")
@@ -31,9 +31,13 @@ export default function LogInForm(props) {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Content-type',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+            'Access-Control-Allow-Credentials': true,
+
         },
-            client_secret: "fdAE6nVPygkKxWVrn92SdzekMYuzgzqa88eci6Lm",
-            client_id: "94ba363d-e0ab-4649-86ce-4a4392cc00ad",
+            client_secret: "azUdWDryXb9htqx2grGDdusL1nxkDyeiKeGtYKAJ",
+            client_id: "4",
             grant_type: "password",
             password: data.password,
             username: data.emailAddress,
