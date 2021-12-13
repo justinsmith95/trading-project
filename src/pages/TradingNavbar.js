@@ -13,7 +13,7 @@ export default function FishHeader(props) {
         <Navbar bg="light" expand="lg">
             <Container>
                 <Navbar.Brand>
-                    <Nav.Link to="/home" as={NavLink}>Trade Simulator</Nav.Link>
+                    <Nav.Link to="/home" as={NavLink}>Trade Tracker</Nav.Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
