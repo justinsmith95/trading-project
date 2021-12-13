@@ -87,6 +87,10 @@ export default function TradingChart(props) {
  
     // const [state, dispatch] = useReducer(reducer, initialState);
 
+    const addToWatchList = () => {
+        // click button to add the currrent stock to watchlist, send data.name and data.symbol
+    }
+
     return (
         <div className="mixed-chart" >
 
@@ -97,6 +101,7 @@ export default function TradingChart(props) {
                 height={500}
                 width={800}
             />
+            <Button onclick={()=>  addToWatchList()}>Add to WatchList</Button>
         </div >
 
 

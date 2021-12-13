@@ -7,6 +7,7 @@ import {
     useNavigate,
     Link,
     AppContext,
+    Redirect,
 } from "react-router-dom";
 import TradingNavbar from './pages/TradingNavbar';
 import LoginForm from './pages/LoginForm';
@@ -25,14 +26,14 @@ function App(props) {
 
     //      get User Info from Auth token API Call (3)
     const getUserInfo = () => {
-        axios.get("https://port-3000-aincbootcampapi-ianrios529550.codeanyapp.com/api/auth/user", {
+        axios.get("https://Backend-Laravel-jtsmith956297578.codeanyapp.com/api/v1/user", {
             headers: {
                 'Authorization': 'Bearer ' + token
             }
         })
             .then(function (response) {
                 console.log(response);
-                setUserData(response.data.data.user_data)
+                setUserData(response.data)
                 //    setUserName()
             })
             .catch(function (error) {
@@ -99,19 +100,19 @@ function App(props) {
             />
 
             <Routes>
-                <Route path='/'>
+            <Route>
+                <Route exact path="/" element={<LandingPage token={token} />} />
+
+                <Route path="LogInForm"
+                    element={<LoginForm setToken={setToken} token={token} />} />
 
 
-                    <Route path="LogInForm"
-                        element={<LoginForm setToken={setToken} token={token} />} />
+                {/* <Route path="TradeSim" element={<TradeSim setToken={setToken} token={token} />} /> */}
 
-
-                    <Route path="TradeSim" element={<TradeSim setToken={setToken} token={token} />} />
-
-                    <Route path="RegisterForm" element={<RegisterForm setToken={setToken} />} />
-                    <Route path="Dashboard" element={<Dashboard userName={userData.name} token={token} />} />
-                    <Route path="landingpage" index element={<LandingPage token={token} />} />
-                    <Route path="*" element={<LandingPage />} />
+                <Route path="RegisterForm" element={<RegisterForm setToken={setToken} />} />
+                <Route path="Dashboard" element={<Dashboard userName={userData.name} token={token} />} />
+                <Route path="landingpage" index element={<LandingPage token={token} />} />
+                <Route path="*" element={<LandingPage />} />
                 </Route>
             </Routes>
 

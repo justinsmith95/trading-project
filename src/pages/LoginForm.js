@@ -47,10 +47,10 @@ export default function LogInForm(props) {
 
         })
             .then(function (response) {
-                props.setToken(response.data.data.token)
-                localStorage.setItem("userToken", response.data.data.token)
-                navigate("/home")
                 console.log(response);
+                props.setToken(response.data.access_token)
+                localStorage.setItem("userToken", response.data.access_token)
+                navigate("/dashboard")
             })
             .catch(function (error) {
                 console.log(error)
@@ -59,7 +59,7 @@ export default function LogInForm(props) {
         //console.log(response)
     }
 
-    return (
+    return ( props.token !== "" ? <Navigate to="/dashboard" /> :
         <div>
 
         <Form onSubmit={logInUser}>

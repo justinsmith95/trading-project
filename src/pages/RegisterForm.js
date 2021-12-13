@@ -111,13 +111,12 @@ export default function RegisterForm(props) {
 
     const postNewUser = () => {
         axios.post(registerAPI_URL, {
-            name: data.emailAddress,
             email: data.emailAddress,
             password: data.password
         })
             .then(function (response) {
                 console.log(response);
-                let userToken = response.data.data.token
+                let userToken = response.data.access_token
                 // setUserToken(response.data.data.token)
                 localStorage.setItem("userToken", userToken)
                 props.setToken(userToken)
@@ -156,7 +155,8 @@ export default function RegisterForm(props) {
 
 
 
-    return (
+    return ( props.token !== "" ? <Navigate to="/dashboard" /> :
+    
         <Form onSubmit={submitRegisterForm}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>

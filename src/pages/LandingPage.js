@@ -9,8 +9,7 @@ import TradingChart from "../components/TradingChart"
 
 export default function Home(props) {
   
-let newData = formatData(stockData["Time Series (Daily)"])
-console.log(newData)
+
   
     
     let navigate = useNavigate();
@@ -21,16 +20,15 @@ console.log(newData)
     const RegisterButton = () => {
         navigate("/RegisterForm");
     }
-            return  (  props.token.length > 0 ? <Navigate to="/dashboard" /> :
+            return  (  props.token !== "" ? <Navigate to="/dashboard" /> :
                 <div>
-                    <TradingChart/>
         <p>
-                    {/* {//*make log in log out same button change based on status* */}You must <Link to="/LogInForm">Log In</Link> to simulate trades
+                    {/* {//*make log in log out same button change based on status* */}You must <Link to="/LogInForm">Log In</Link> to view stock information.
         <button type="button" className="btn btn-primary my-2" onClick={LogInButton}> {""} 
           Log In
         </button>
         </p>
-        <p> Don't have an Account? <Link to="/RegisterForm">Register</Link> with us!
+        <p> Don't have an Account? <Link to="/RegisterForm">Register</Link> with us to track stock chart data and maintain a WatchList!
         <button type="button" className="btn btn-secondary my-2" onClick={RegisterButton}> Register </button> {""}
         </p>
 

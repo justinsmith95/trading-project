@@ -3,7 +3,9 @@ import {
     Form,
     Button,
     InputGroup,
-    ListGroup
+    ListGroup,
+    Row,
+    Col,
 } from "react-bootstrap";
 import axios from 'axios';
 import { getSearchData, getChartData } from '../utilities/axiosHelper';
@@ -31,6 +33,8 @@ export default function SearchBar({setSymbol}) {
                 setSearchData(result.data);
     
                 setSymbol(result.data.bestMatches[0]['1. symbol']);
+
+                setSearchData("");
 
                 setSubmit(false);
 
@@ -81,12 +85,16 @@ const updateSearch = (sym) => {
 
     return (
         <>
+
+        <Col>
             <Form id="symbol-search">
+                <p></p>
                 <Form.Label>Search</Form.Label>
                 <input type="text" placeholder="Example: TSLA" onChange={e => setSearch(e.target.value)} value={search} />
                 {Object.keys(searchData).length > 0 && search.length > 0 && <InputList updateSearch={updateSearch} searchData={searchData}/>}
                 <Button onClick={()=>  setSubmit(true)} >Search</Button>
             </Form>
+        </Col>
         </>
 
 
