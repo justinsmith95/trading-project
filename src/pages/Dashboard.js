@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Navigate, useNavigate } from "react-router-dom";
 import TradingChart from '../components/TradingChart'
 import axiosHelper from '../utilities/axiosHelper'
@@ -14,11 +14,17 @@ import {
     ListGroupItem,
     Card
 } from "react-bootstrap";
+import WatchList, {watchListArray} from '../components/WatchList';
 
 
 
 
 export default function Dashboard(props) {
+
+    useEffect(() => {
+       localStorage.getItem(watchListArray)
+        
+    }, []);
 
 
     const [symbol, setSymbol] = useState("")
@@ -38,18 +44,7 @@ export default function Dashboard(props) {
                     </p>
                 </Col>
                 <Col>
-                    <Card>
-                        <Card.Header className="text-center" as="h5">My WatchList</Card.Header>
-                        <Card.Body>
-
-                            <ListGroup>
-                                <ListGroup.Item action="info">
-                                    Info  
-                            <Button className="d-flex justify-content-right" variant="secondary">remove from list</Button>
-  </ListGroup.Item>
-                            </ListGroup>
-                        </Card.Body>
-                    </Card>
+                    <WatchList watchListArray={watchListArray}> </WatchList>
                 </Col>
                 <Col className="col-1"></Col>
             </Row>

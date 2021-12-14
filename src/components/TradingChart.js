@@ -7,6 +7,15 @@ import { getChartData } from "../utilities/axiosHelper";
 import SearchBar from "../components/SearchBar";
 import {reducer, initialState} from '../utilities/reducer'
 import {actionChange, actionSubmit, actionBroken} from '../utilities/actions'
+import {
+    Form,
+    Button,
+    InputGroup,
+    ListGroup,
+    Row,
+    Col,
+} from "react-bootstrap";
+import watchListArray from '../components/WatchList'
 
 
 export default function TradingChart(props) {
@@ -88,6 +97,11 @@ export default function TradingChart(props) {
     // const [state, dispatch] = useReducer(reducer, initialState);
 
     const addToWatchList = () => {
+        console.log(alphaData)
+        alphaData.length > 0? 
+        watchListArray.push(alphaData.name, alphaData.symbol) &&
+        console.log(watchListArray) :
+        console.log("error");
         // click button to add the currrent stock to watchlist, send data.name and data.symbol
     }
 
@@ -101,7 +115,7 @@ export default function TradingChart(props) {
                 height={500}
                 width={800}
             />
-            <Button onclick={()=>  addToWatchList()}>Add to WatchList</Button>
+            <Button onClick={addToWatchList()}>Add to WatchList</Button>
         </div >
 
 
