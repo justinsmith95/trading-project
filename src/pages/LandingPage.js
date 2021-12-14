@@ -28,7 +28,7 @@ export default function Home(props) {
           Log In
         </button>
         </p>
-        <p> Don't have an Account? <Link to="/RegisterForm">Register</Link> with us to track stock chart data and maintain a WatchList!
+        <p> Don't have an Account? <Link to="/RegisterForm">Register</Link> with us to track stock chart data and maintain a WatchList.       
         <button type="button" className="btn btn-secondary my-2" onClick={RegisterButton}> Register </button> {""}
         </p>
 

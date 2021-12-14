@@ -12,44 +12,20 @@ import {
     ListGroupItem,
     Card
 } from "react-bootstrap";
-import WatchListItem from '../components/WatchListItem';
+import WatchListItem from './WatchListItem';
 
 export default function WatchList(props) {
-
-
-    const [watchListArray, setWatchListArray] = useState([]);
-
-    useEffect(() => {
-      console.log(watchListArray);
-      localStorage.setItem(watchListArray)
-    }, [watchListArray])
-
-
-
-
     return (
-
         <Card>
             <Card.Header className="text-center" as="h5">My WatchList</Card.Header>
             <Card.Body>
-
                 <ListGroup>
-                    {watchListArray.map((item, index) => {
-                        return (
-                        watchListArray.length === 0 ?
-                                <p>No items on your WatchList. Add some!</p> :
-                                <WatchListItem
-                                    data={item}
-                                    key={index}
-                                />
-                        )
-                    })
-                    }
+                    {props.watchListArray.length > 0
+                        ? props.watchListArray.map((item, index) => <WatchListItem data={item} key={index} getWatchListData={props.getWatchListData}/>)
+                        : <p>No items on your WatchList. Add some!</p>}
                 </ListGroup>
             </Card.Body>
         </Card>
-
-
     )
 }
 
