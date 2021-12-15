@@ -116,8 +116,8 @@ export default function RegisterForm(props) {
         })
             .then(function (response) {
                 console.log(response);
-                let userToken = response.data.access_token
-                // setUserToken(response.data.data.token)
+                // let userToken = response.data.access_token
+                let userToken = (response.data.data.token)
                 localStorage.setItem("userToken", userToken)
                 props.setToken(userToken)
                 navigate("/dashboard")
@@ -155,7 +155,7 @@ export default function RegisterForm(props) {
 
 
 
-    return ( props.token !== "" ? <Navigate to="/dashboard" /> :
+    return ( props.token ? <Navigate to="/dashboard" /> :
     
         <Form onSubmit={submitRegisterForm}>
             <Form.Group className="mb-3" controlId="formBasicEmail">

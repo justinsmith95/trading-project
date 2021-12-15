@@ -21,7 +21,7 @@ export default function WatchList(props) {
             <Card.Body>
                 <ListGroup>
                     {props.watchListArray.length > 0
-                        ? props.watchListArray.map((item, index) => <WatchListItem data={item} key={index} getWatchListData={props.getWatchListData}/>)
+                        ? props.watchListArray.map((item, index) => <WatchListItem data={item} key={index} removeFromWatchList={props.removeFromWatchList} getWatchListData={props.getWatchListData}/>)
                         : <p>No items on your WatchList. Add some!</p>}
                 </ListGroup>
             </Card.Body>

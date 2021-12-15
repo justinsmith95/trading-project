@@ -48,7 +48,8 @@ export const getChartData = (symbol) => {
         params: {
             function: 'TIME_SERIES_DAILY',
             symbol,
-            apikey: "EADD7VFG8GG0ABQY"
+            apikey: "JHFDMVKIY1CBYJBR"
+            // secondary key: "EADD7VFG8GG0ABQY"
         }
     })
 };
@@ -58,7 +59,7 @@ export const getSearchData = (search) => {
         params: {
             function: 'SYMBOL_SEARCH',
             keywords: `${search}`,
-            apikey: "EADD7VFG8GG0ABQY"
+            apikey: "JHFDMVKIY1CBYJBR"
         }
     })
 };

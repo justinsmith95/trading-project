@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, } from 'react'
 import { Navigate, useNavigate } from "react-router-dom";
 import TradingChart from '../components/TradingChart'
 import axiosHelper from '../utilities/axiosHelper'
@@ -39,6 +39,8 @@ export default function Dashboard(props) {
 
     const [series, setSeries] = useState([])
 
+
+
     const fetchStockDataOnChange = async (newSymbol) => {
         const result = await getChartData(newSymbol);
 
@@ -53,21 +55,28 @@ export default function Dashboard(props) {
     };
 
 
+
+
     useEffect(() => {
         const fetchStockDataOnLoad = async () => {
-            const result = await getChartData(symbol);
+            console.log({ symbol })
+            if (symbol.length > 0) {
 
-            console.log(result.data)
-            setAlphaData(result.data)
+                const result = await getChartData(symbol);
 
-            let newData = formatData(result.data["Time Series (Daily)"])
-            console.log(newData);
+                console.log(result.data)
+                setAlphaData(result.data)
 
-            setSeries(newData.series);
+                let newData = formatData(result.data["Time Series (Daily)"])
+                console.log(newData);
+
+                setSeries(newData.series);
+            }
         };
         fetchStockDataOnLoad()
-    }, []);
+    }, [symbol]);
 
+ 
 
     const addToWatchList = () => {
         console.log(alphaData)
@@ -83,12 +92,15 @@ export default function Dashboard(props) {
         // click button to add the currrent stock to watchlist, send data.name and data.symbol
     }
 
-    const removeFromWatchList = () => {
-        console.log(watchListArray)
+    const removeFromWatchList = (clickedSym) => {
         setWatchListArray(prevList => {
-            let newList = prevList.splice({ symbol: alphaData['Meta Data']['2. Symbol'] })
-            window.localStorage.removeItem('watchListArray', JSON.stringify(newList))
-            console.log(watchListArray);
+            let newList = prevList.filter(item => {
+                if (item.symbol !== clickedSym) {
+                    return item
+                }
+            })
+            window.localStorage.setItem('watchListArray', JSON.stringify(newList))
+            console.log(newList);
             return newList;
         })
     }

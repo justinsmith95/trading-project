@@ -22,6 +22,7 @@ export default function WatchListItem(props) {
         <ListGroup.Item action="info">
             {props.data.name}     {props.data.symbol}
             <Button onClick={()=>props.removeFromWatchList(props.data.symbol)} className="d-flex justify-content-right" variant="secondary">remove from list</Button>
+            <p></p>
             <Button onClick={()=>props.getWatchListData(props.data.symbol)} className="d-flex justify-content-right" variant="secondary">View Data</Button>
         </ListGroup.Item>
     );

@@ -36,8 +36,8 @@ export default function LogInForm(props) {
             'Access-Control-Allow-Credentials': true,
 
         },
-            client_secret: "azUdWDryXb9htqx2grGDdusL1nxkDyeiKeGtYKAJ",
-            client_id: "4",
+            client_secret: "jem7AoISD7wxfPakilkDSuxvYmgfQyPDv0OwxRrY",
+            client_id: "2",
             grant_type: "password",
             password: data.password,
             username: data.emailAddress,
